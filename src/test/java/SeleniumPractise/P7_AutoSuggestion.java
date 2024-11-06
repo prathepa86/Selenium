@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class P7_WebTable {
+public class P7_AutoSuggestion {
 	public static WebDriver driver;
 	public static String sURL="https://www.google.com/";
 
@@ -28,6 +28,7 @@ public class P7_WebTable {
         	if(allValues.get(i).getText().equals("selenium")){
         		allValues.get(i).click();
         		break;
+   //We get stale element reference exception if we didnot include break
         	}
         	
         }
