@@ -9,19 +9,23 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class P17_CalculateFDthroughExcel {
+public class P17_CalculateFDthroughExcel1 {
 	
 	public static String sURL="https://www.moneycontrol.com/fixed-income/calculator/state-bank-of-india-sbi/fixed-deposit-calculator-SBI-BSB001.html?classic=true";
 	public static String sheetName="data";
 public static WebDriver driver;
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		driver=new ChromeDriver();
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("--disable-notifications");
+		
+		driver=new ChromeDriver(options);
 		driver.get(sURL);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -62,18 +66,18 @@ public static WebDriver driver;
 			Select fre=new Select(Frequency_Type);
 			fre.selectByVisibleText(Frequency);
 			//6.click on calculate button
-			Thread.sleep(3000);
+			
 			WebElement calculate=driver.findElement(By.xpath("//div[@class='CTR PT15']"));
 			//WebDriverWait oWait=new WebDriverWait(driver,Duration.ofSeconds(20));
 			//oWait.until(ExpectedConditions.elementToBeClickable(calculate));
 			Thread.sleep(3000);
 	
 			//calculate.click();
-			//Actions action=new Actions(driver);
-			//action.moveToElement(calculate).click(calculate).perform();
-			JavascriptExecutor js=(JavascriptExecutor)driver;
+			Actions action=new Actions(driver);
+			action.moveToElement(calculate).click().perform();
+			//JavascriptExecutor js=(JavascriptExecutor)driver;
 		
-			js.executeScript("arguments[0].click()",calculate);
+			//js.executeScript("arguments[0].click()",calculate);
 			
 			//7.Capture Maturity value
 			String actual_MaturityVal = driver.findElement(By.xpath("//span[@id='resp_matval']/strong")).getText();
@@ -93,7 +97,7 @@ public static WebDriver driver;
 			}
 			Thread.sleep(2000);
 			//To clear the values before moving on to the next iteration
-			driver.findElement(By.xpath("(//div[@class='CTR PT15']/a)[2]")).clear();
+			driver.findElement(By.xpath("//img[@class='PL5']")).click();
 		  		
 			
 		}//ForLoop end here
