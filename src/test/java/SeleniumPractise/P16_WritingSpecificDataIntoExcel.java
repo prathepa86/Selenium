@@ -17,6 +17,7 @@ public class P16_WritingSpecificDataIntoExcel {
 		XSSFSheet oSheet=oWorkbook.createSheet("data");
 		//Index starts from 0,So it will generate 4 rows
 		XSSFRow oRow=oSheet.createRow(3);
+		//index starts from 0,It will set the value 3rd column
 		oRow.createCell(2).setCellValue("Completed");
 		oWorkbook.write(oFos);
 		oWorkbook.close();
