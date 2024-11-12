@@ -27,7 +27,7 @@ public class P2_LoginTest {
 	//Test method and Validation
 	@Test
 	public void testLogin() {
-		new P2_LoginPage(driver)
+		new P2_LoginPageUsingPageFactory(driver)
 		.setUsername("Admin")
 		.setPassword("admin123")
 		.clickLogin();
