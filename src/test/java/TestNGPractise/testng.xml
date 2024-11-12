@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ExtentReport">
+	<listeners>
+		<listener class-name="TestNGPractise.P1_ExtentReportManager"></listener>
+		</listeners>
+  <test thread-count="5" name="ExtentReport">
+    <classes>
+      <class name="TestNGPractise.P1_OrangeHRMLoginPage"/>
+    </classes>
+  </test> <!-- ExtentReport -->
+</suite> <!-- ExtentReport -->
